@@ -4,9 +4,13 @@
   margin: 0;
   padding: 0;
   /* box-sizing: border-box; */
+  font-family: "Noto Sans", sans-serif;
 }
 nav {
-  font-family: "Roboto", sans-serif;
+  font-family: "Noto Sans", sans-serif;
+}
+body {
+  background-color: aliceblue;
 }
 nav ul {
   display: flex;
@@ -47,11 +51,16 @@ nav ul {
   /* position: sticky; */
   background-color: rgb(0, 0, 0);
   bottom: 0;
+  width: 90%;
+  margin: 23px auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 .container {
   min-height: 65vh;
   display: flex;
@@ -73,9 +82,11 @@ nav ul {
   width: 80%;
   height: 5px;
   background-color: #282828;
-  color: blueviolet;
+  color: rgb(48, 156, 38);
   /* position: fixed; */
+  margin-top: 5px;
   bottom: 0;
+  cursor: pointer;
 }
 .icons {
   display: flex;
@@ -108,4 +119,29 @@ nav ul {
 #playy {
   margin-right: 10px;
   cursor: pointer;
+}
+.songInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  margin-left: 10px;
+}
+.songInfo img {
+  margin-right: 10px;
+  width: 42px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70px;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  font-family: "Noto Sans", sans-serif;
+  font-size: 15px;
 }
