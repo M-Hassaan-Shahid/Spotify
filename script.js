@@ -12,7 +12,7 @@ let songs = [
     { songName: "Kal Ho Naa Ho ", filePath: "songs/3.mp3", coverPath: "covers/3.jpeg", duration: 335 }, // 5:35
     { songName: "Kabira", filePath: "songs/4.mp3", coverPath: "covers/4.jpeg", duration: 208 }, // 3:28
     { songName: "Galliyan - Ek Villain", filePath: "songs/5.mp3", coverPath: "covers/5.jpg", duration: 307 }, // 5:07
-    { songName: "Pehla Nasha ", filePath: "songs/6.mp3", coverPath: "covers/6.jpg", duration: 362 }, // 6:02
+    { songName: "Pehla Nasha", filePath: "songs/6.mp3", coverPath: "covers/6.jpg", duration: 362 }, // 6:02
     { songName: "Tum Se Hi - Jab We Met", filePath: "songs/7.mp3", coverPath: "covers/7.jpeg", duration: 331 }, // 5:31
     { songName: "Dil To Pagal Hai", filePath: "songs/8.mp3", coverPath: "covers/8.jpg", duration: 353 }, // 5:53
     { songName: "Zindagi Na Milegi Dobara ", filePath: "songs/9.mp3", coverPath: "covers/9.jpeg", duration: 251 }, // 4:11
