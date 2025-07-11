@@ -20,17 +20,27 @@ nav ul {
   height: 55px;
   background-color: black;
 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
   /* padding: 10px 0; */
 }
 .logo {
   height: 35px;
   /* width: 40px; */
 }
+.logo:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
+}
 .logoText {
   font-size: 20px;
   color: white;
   font-weight: 600;
   margin-left: 10px;
+}
+.logoText:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
 }
 .image {
   display: flex;
@@ -47,7 +57,7 @@ nav ul {
   margin-left: 20px;
 }
 .bottom {
-  height: 60px;
+  height: 67px;
   /* position: sticky; */
   background-color: rgb(0, 0, 0);
   bottom: 0;
@@ -78,6 +88,7 @@ nav ul {
 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 #myProgressBar {
   width: 80%;
   height: 5px;
@@ -92,9 +103,15 @@ nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
   height: 100%;
   width: 80px;
   color: white;
+}
+.icons:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
 }
 .songItem {
   display: flex;
@@ -120,6 +137,10 @@ nav ul {
   margin-right: 10px;
   cursor: pointer;
 }
+#playy:hover {
+  transform: scale(1.2);
+  transition: transform 0.5s ease-in-out;
+}
 .songInfo {
   display: flex;
   align-items: center;
@@ -144,6 +165,11 @@ footer {
   color: rgb(0, 0, 0);
   font-family: "Noto Sans", sans-serif;
   font-size: 15px;
+  font-weight: 600;
+}
+footer p:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
 }
 #gif {
   /* opacity: ; */
