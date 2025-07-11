@@ -92,7 +92,7 @@ nav ul {
 #myProgressBar {
   width: 80%;
   height: 5px;
-  background-color: #282828;
+  background-color: #279b30b4;
   color: rgb(48, 156, 38);
   /* position: fixed; */
   margin-top: 5px;
@@ -107,6 +107,7 @@ nav ul {
   margin-bottom: 5px;
   height: 100%;
   width: 80px;
+  cursor: pointer;
   color: white;
 }
 .icons:hover {
@@ -123,6 +124,9 @@ nav ul {
   border-radius: 34px;
   height: 50px;
   color: black;
+  box-sizing: border-box;
+  border: 1px solid transparent; /* Optional: subtle border for clarity */
+  position: relative;
 }
 .songItem img {
   margin-left: 10px;
