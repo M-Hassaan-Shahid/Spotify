@@ -44,12 +44,14 @@ masterPlay.addEventListener('click', () => {
         gif.style.opacity = 1;
         removeAllPlaying();
         songItems[songIndex].classList.add("playing");
+        songItems[songIndex].getElementsByTagName("img")[0].classList.add("rotating");
     } else {
         audioElement.pause();
         masterPlay.classList.remove("fa-pause-circle");
         masterPlay.classList.add("fa-play-circle");
         gif.style.opacity = 0;
         removeAllPlaying();
+        songItems[songIndex].getElementsByTagName("img")[0].classList.remove("rotating");
     }
 })
 document.getElementById("reloadButton").addEventListener("click", function () {
@@ -89,6 +91,10 @@ document.querySelectorAll(".songItemPlay").forEach((element) => {
             masterPlay.classList.add("fa-pause-circle");
             gif.style.opacity = 1;
             songItems[songIndex].classList.add("playing");
+            songItems.forEach((item) => {
+                item.getElementsByTagName("img")[0].classList.remove("rotating");
+            });
+            songItems[songIndex].getElementsByTagName("img")[0].classList.add("rotating");
         } else {
             // Pause current song
             audioElement.pause();
@@ -98,6 +104,7 @@ document.querySelectorAll(".songItemPlay").forEach((element) => {
             masterPlay.classList.add("fa-play-circle");
             gif.style.opacity = 0;
             removeAllPlaying();
+            songItems[songIndex].getElementsByTagName("img")[0].classList.remove("rotating");
         }
     });
 });
@@ -115,6 +122,10 @@ document.getElementById("next").addEventListener('click', () => {
     document.getElementById(`songPlay${songIndex}`).classList.add("fa-pause-circle");
     removeAllPlaying();
     songItems[songIndex].classList.add("playing");
+    songItems.forEach((item) => {
+        item.getElementsByTagName("img")[0].classList.remove("rotating");
+    });
+    songItems[songIndex].getElementsByTagName("img")[0].classList.add("rotating");
 })
 document.getElementById("previous").addEventListener('click', () => {
     songIndex = (songIndex <= 0) ? 9 : songIndex - 1;
@@ -130,4 +141,8 @@ document.getElementById("previous").addEventListener('click', () => {
     document.getElementById(`songPlay${songIndex}`).classList.add("fa-pause-circle");
     removeAllPlaying();
     songItems[songIndex].classList.add("playing");
+    songItems.forEach((item) => {
+        item.getElementsByTagName("img")[0].classList.remove("rotating");
+    });
+    songItems[songIndex].getElementsByTagName("img")[0].classList.add("rotating");
 })

@@ -181,7 +181,19 @@ h2 {
   margin-right: 10px;
   width: 42px;
 }
+.rotating {
+  border: #30ce3db4 4px solid;
+  animation: rotate 4s linear infinite;
+}
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 footer {
   display: flex;
   justify-content: center;
