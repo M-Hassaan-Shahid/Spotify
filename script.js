@@ -42,8 +42,6 @@ masterPlay.addEventListener('click', () => {
         masterPlay.classList.remove("fa-play-circle");
         masterPlay.classList.add("fa-pause-circle");
         gif.style.opacity = 1;
-        document.getElementById(`songPlay${songIndex}`).classList.remove("fa-play-circle");
-        document.getElementById(`songPlay${songIndex}`).classList.add("fa-pause-circle");
         removeAllPlaying();
         songItems[songIndex].classList.add("playing");
     } else {
@@ -51,8 +49,6 @@ masterPlay.addEventListener('click', () => {
         masterPlay.classList.remove("fa-pause-circle");
         masterPlay.classList.add("fa-play-circle");
         gif.style.opacity = 0;
-        document.getElementById(`songPlay${songIndex}`).classList.remove("fa-pause-circle");
-        document.getElementById(`songPlay${songIndex}`).classList.add("fa-play-circle");
         removeAllPlaying();
     }
 })

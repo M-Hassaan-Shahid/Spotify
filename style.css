@@ -137,7 +137,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 125%;
   margin: 10px auto;
   background-color: aliceblue;
   border-radius: 20px;
@@ -180,9 +180,6 @@ h2 {
 .songInfo img {
   margin-right: 10px;
   width: 42px;
-}
-.songItem::-webkit-scrollbar {
-  display: none;
 }
 
 footer {
