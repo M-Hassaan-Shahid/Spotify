@@ -7,18 +7,26 @@ let songItems = Array.from(document.getElementsByClassName("songItem"));
 let masterSongName = document.getElementById("masterSong");
 // Corrected songs array
 let songs = [
-    { songName: "Warriyo - Mortals (feat. Laura Brehm)", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" },
-    { songName: "Cielo - Huma-Huma", filePath: "songs/2.mp3", coverPath: "covers/2.jpg" },
-    { songName: "DEAF KEV - Invincible", filePath: "songs/3.mp3", coverPath: "covers/3.jpg" },
-    { songName: "Different Heaven & EH!DE - My Heart", filePath: "songs/4.mp3", coverPath: "covers/4.jpg" },
-    { songName: "Janji - Heroes Tonight (feat. Johnning)", filePath: "songs/5.mp3", coverPath: "covers/5.jpg" },
-    { songName: "Let Me Love You - Justin Bieber", filePath: "songs/6.mp3", coverPath: "covers/6.jpg" },
-    { songName: "Let Me Love You - Justin Bieber", filePath: "songs/7.mp3", coverPath: "covers/7.jpg" },
-    { songName: "Let Me Love You - Justin Bieber", filePath: "songs/8.mp3", coverPath: "covers/8.jpg" },
-    { songName: "Let Me Love You - Justin Bieber", filePath: "songs/9.mp3", coverPath: "covers/9.jpg" },
-    { songName: "Let Me Love You - Justin Bieber", filePath: "songs/10.mp3", coverPath: "covers/10.jpg" },
+    { songName: "Tum Hi Ho - Aashiqui 2", filePath: "songs/1.mp3", coverPath: "covers/1.jpg", duration: 386 }, // 6:26
+    { songName: "Ghagra", filePath: "songs/4.mp3", coverPath: "covers/4.jpg", duration: 300 },
+    { songName: "Kal Ho Naa Ho ", filePath: "songs/3.mp3", coverPath: "covers/3.jpg", duration: 335 }, // 5:35
+    { songName: "Kabira", filePath: "songs/4.mp3", coverPath: "covers/4.jpg", duration: 208 }, // 3:28
+    { songName: "Galliyan - Ek Villain", filePath: "songs/5.mp3", coverPath: "covers/5.jpg", duration: 307 }, // 5:07
+    { songName: "Pehla Nasha ", filePath: "songs/6.mp3", coverPath: "covers/6.jpg", duration: 362 }, // 6:02
+    { songName: "Tum Se Hi - Jab We Met", filePath: "songs/7.mp3", coverPath: "covers/7.jpg", duration: 331 }, // 5:31
+    { songName: "Dil To Pagal Hai", filePath: "songs/8.mp3", coverPath: "covers/8.jpg", duration: 353 }, // 5:53
+    { songName: "Zindagi Na Milegi Dobara ", filePath: "songs/9.mp3", coverPath: "covers/9.jpg", duration: 251 }, // 4:11
+    { songName: "Main Hoon Na", filePath: "songs/10.mp3", coverPath: "covers/10.jpg", duration: 357 } // 5:57
 ];
+function updateAllTimeText() {
+    songItems.forEach((element, i) => {
+        if (element.getElementsByClassName("time")[0]) {
+            element.getElementsByClassName("time")[0].innerText = new Date(songs[i].duration * 1000).toISOString().substr(14, 5);
+        }
+    });
+}
 songItems.forEach((element, i) => {
+    updateAllTimeText()
     element.getElementsByTagName("img")[0].src = songs[i].coverPath;
     element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
 })
