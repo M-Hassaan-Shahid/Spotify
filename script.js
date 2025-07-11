@@ -8,7 +8,7 @@ let masterSongName = document.getElementById("masterSong");
 // Corrected songs array
 let songs = [
     { songName: "Tum Hi Ho - Aashiqui 2", filePath: "songs/1.mp3", coverPath: "covers/1.jpeg", duration: 386 }, // 6:26
-    { songName: "Ghagra", filePath: "songs/4.mp3", coverPath: "covers/4.jpg", duration: 300 },
+    { songName: "Ghagra", filePath: "songs/4.mp3", coverPath: "covers/2.jpg", duration: 300 },
     { songName: "Kal Ho Naa Ho ", filePath: "songs/3.mp3", coverPath: "covers/3.jpeg", duration: 335 }, // 5:35
     { songName: "Kabira", filePath: "songs/4.mp3", coverPath: "covers/4.jpeg", duration: 208 }, // 3:28
     { songName: "Galliyan - Ek Villain", filePath: "songs/5.mp3", coverPath: "covers/5.jpg", duration: 307 }, // 5:07

@@ -137,7 +137,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 95%;
+  width: 100%;
   margin: 10px auto;
   background-color: aliceblue;
   border-radius: 20px;
@@ -146,21 +146,22 @@ h2 {
   box-sizing: border-box;
   border: 1px solid transparent;
   /* overflow-x: auto; */
-  /* font-size: 0.8rem; */
+  font-size: 1rem;
   /* white-space: nowrap; */
 }
 .songItem img {
   margin-left: 10px;
   width: 43px;
+  height: 43px;
   border-radius: 20px;
 }
 .time {
   font-size: 1rem;
-  margin-right: 10px;
+  margin-right: 5px;
   margin-left: 10px;
 }
 .songItemPlay {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -313,7 +314,7 @@ footer p:hover {
     height: 25px;
     /* font-size: 1.2rem; */
   }
-  h2{
+  h2 {
     font-size: 1.2rem;
     margin-left: 5px;
   }
@@ -321,7 +322,7 @@ footer p:hover {
   .logoText {
     font-size: 1rem;
   }
-   .sign i {
+  .sign i {
     /* margin-top: 2px; */
     font-size: 1rem;
     margin-right: 5px;
