@@ -10,7 +10,7 @@ nav {
   font-family: "Noto Sans", sans-serif;
 }
 body {
-  background-color: rgb(30, 194, 88);
+  background-color: rgb(38, 182, 88);
 }
 nav ul {
   display: flex;
@@ -25,7 +25,7 @@ nav ul {
   /* padding: 10px 0; */
 }
 .sign {
-  color: white;
+  color: rgb(251, 248, 248);
   font-size: 20px;
   margin-right: 20px;
   cursor: pointer;
@@ -42,7 +42,7 @@ nav ul {
 .logoText {
   /* margin-top: 5px; */
   font-size: 20px;
-  color: white;
+  color: rgb(251, 248, 248);
   font-weight: 600;
   margin-left: 10px;
 }
@@ -55,10 +55,10 @@ nav ul {
   justify-content: center;
   align-items: center;
   padding-left: 10px;
-  color: white;
+  color: rgb(251, 248, 248);
 }
 .item {
-  color: white;
+  color: rgb(251, 248, 248);
   text-decoration: none;
   font-size: 20px;
   /* padding: 0 20px; */
@@ -84,7 +84,7 @@ nav ul {
   display: flex;
   width: 75%;
   margin: 23px auto;
-  color: white;
+  color: rgb(251, 248, 248);
   font-family: "Noto Sans", sans-serif;
   background-color: black;
   border-radius: 10px;
@@ -100,8 +100,8 @@ nav ul {
 #myProgressBar {
   width: 80%;
   height: 5px;
-  background-color: #279b30b4;
-  color: rgb(48, 156, 38);
+  background-color: #34d341b4;
+  color: rgba(49, 214, 33, 0);
   /* position: fixed; */
   margin-top: 5px;
   bottom: 0;
@@ -116,7 +116,7 @@ nav ul {
   height: 100%;
   width: 80px;
   cursor: pointer;
-  color: white;
+  color: rgb(251, 248, 248);
 }
 .icons:hover {
   transform: scale(1.1);
@@ -127,7 +127,7 @@ h2 {
   font-size: 1.5rem;
   margin-bottom: 15px;
   margin-left: 15px;
-  color: white;
+  color: rgb(251, 248, 248);
 }
 .songList {
   width: 50%;
@@ -137,9 +137,9 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 125%;
+  width: 120%;
   margin: 10px auto;
-  background-color: aliceblue;
+  background-color: rgb(251, 248, 248);
   border-radius: 20px;
   height: 50px;
   color: black;
@@ -147,7 +147,7 @@ h2 {
   border: 1px solid transparent;
   /* overflow-x: auto; */
   font-size: 1rem;
-  /* white-space: nowrap; */
+  /* rgb(251, 248, 248)-space: nowrap; */
 }
 .songItem img {
   margin-left: 10px;
@@ -172,7 +172,7 @@ h2 {
 .songInfo {
   display: inline-flex;
   align-items: center;
-  color: white;
+  color: rgb(251, 248, 248);
   font-family: "Noto Sans", sans-serif;
   /* font-size: 0.3rem; */
   margin-left: 10px;
@@ -186,13 +186,13 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: 70px;
+  height: 30px;
   background-color: transparent;
   color: rgb(0, 0, 0);
   font-family: "Noto Sans", sans-serif;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 17px;
 }
 footer p:hover {
   transform: scale(1.1);
@@ -202,6 +202,15 @@ footer p:hover {
   /* opacity: ; */
   /* opacity 0 */
   transition: opacity 0.5s ease-in-out;
+}
+.sign i {
+  font-size: 20px;
+  color: rgb(251, 248, 248);
+  font-weight: 600;
+}
+.sign i:hover {
+  transform: scale(1.2);
+  transition: transform 0.5s ease-in-out;
 }
 @media screen and (max-width: 768px) {
   .container {
@@ -257,7 +266,7 @@ footer p:hover {
   }
 
   footer {
-    height: 50px;
+    height: 20px;
     font-size: 0.8rem;
   }
 

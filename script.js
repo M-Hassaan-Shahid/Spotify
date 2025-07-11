@@ -52,6 +52,9 @@ masterPlay.addEventListener('click', () => {
         removeAllPlaying();
     }
 })
+document.getElementById("reloadButton").addEventListener("click", function () {
+    location.reload(); // or location.reload(true) for force reload
+});
 audioElement.addEventListener('timeupdate', () => {
     // Update seek bar
     progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
