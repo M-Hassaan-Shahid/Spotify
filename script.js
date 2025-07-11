@@ -7,15 +7,15 @@ let songItems = Array.from(document.getElementsByClassName("songItem"));
 let masterSongName = document.getElementById("masterSong");
 // Corrected songs array
 let songs = [
-    { songName: "Tum Hi Ho - Aashiqui 2", filePath: "songs/1.mp3", coverPath: "covers/1.jpg", duration: 386 }, // 6:26
+    { songName: "Tum Hi Ho - Aashiqui 2", filePath: "songs/1.mp3", coverPath: "covers/1.jpeg", duration: 386 }, // 6:26
     { songName: "Ghagra", filePath: "songs/4.mp3", coverPath: "covers/4.jpg", duration: 300 },
-    { songName: "Kal Ho Naa Ho ", filePath: "songs/3.mp3", coverPath: "covers/3.jpg", duration: 335 }, // 5:35
-    { songName: "Kabira", filePath: "songs/4.mp3", coverPath: "covers/4.jpg", duration: 208 }, // 3:28
+    { songName: "Kal Ho Naa Ho ", filePath: "songs/3.mp3", coverPath: "covers/3.jpeg", duration: 335 }, // 5:35
+    { songName: "Kabira", filePath: "songs/4.mp3", coverPath: "covers/4.jpeg", duration: 208 }, // 3:28
     { songName: "Galliyan - Ek Villain", filePath: "songs/5.mp3", coverPath: "covers/5.jpg", duration: 307 }, // 5:07
     { songName: "Pehla Nasha ", filePath: "songs/6.mp3", coverPath: "covers/6.jpg", duration: 362 }, // 6:02
-    { songName: "Tum Se Hi - Jab We Met", filePath: "songs/7.mp3", coverPath: "covers/7.jpg", duration: 331 }, // 5:31
+    { songName: "Tum Se Hi - Jab We Met", filePath: "songs/7.mp3", coverPath: "covers/7.jpeg", duration: 331 }, // 5:31
     { songName: "Dil To Pagal Hai", filePath: "songs/8.mp3", coverPath: "covers/8.jpg", duration: 353 }, // 5:53
-    { songName: "Zindagi Na Milegi Dobara ", filePath: "songs/9.mp3", coverPath: "covers/9.jpg", duration: 251 }, // 4:11
+    { songName: "Zindagi Na Milegi Dobara ", filePath: "songs/9.mp3", coverPath: "covers/9.jpeg", duration: 251 }, // 4:11
     { songName: "Main Hoon Na", filePath: "songs/10.mp3", coverPath: "covers/10.jpg", duration: 357 } // 5:57
 ];
 function updateAllTimeText() {
