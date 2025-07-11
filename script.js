@@ -118,8 +118,6 @@ document.getElementById("next").addEventListener('click', () => {
     masterPlay.classList.add("fa-pause-circle");
     gif.style.opacity = 1;
     makeAllPlays();
-    document.getElementById(`songPlay${songIndex}`).classList.remove("fa-play-circle");
-    document.getElementById(`songPlay${songIndex}`).classList.add("fa-pause-circle");
     removeAllPlaying();
     songItems[songIndex].classList.add("playing");
     songItems.forEach((item) => {
@@ -137,8 +135,6 @@ document.getElementById("previous").addEventListener('click', () => {
     masterPlay.classList.add("fa-pause-circle");
     gif.style.opacity = 1;
     makeAllPlays();
-    document.getElementById(`songPlay${songIndex}`).classList.remove("fa-play-circle");
-    document.getElementById(`songPlay${songIndex}`).classList.add("fa-pause-circle");
     removeAllPlaying();
     songItems[songIndex].classList.add("playing");
     songItems.forEach((item) => {
