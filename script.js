@@ -111,6 +111,9 @@ masterPlay.addEventListener('click', () => {
 
         // Update all song item play buttons to play state
         makeAllPlays();
+
+        // Update liked songs display
+        updateLikedSongsDisplay();
     }
 })
 document.getElementById("reloadButton").addEventListener("click", function () {
@@ -139,6 +142,8 @@ audioElement.addEventListener('ended', () => {
         // Play next song
         playNext();
     }
+    // Update liked songs display
+    updateLikedSongsDisplay();
 })
 myProgressBar.addEventListener('change', () => {
     audioElement.currentTime = myProgressBar.value * audioElement.duration / 100;
@@ -150,8 +155,10 @@ let makeAllPlays = () => {
     })
 }
 
+// Song item play button event listeners
 document.querySelectorAll(".songItemPlay").forEach((element) => {
     element.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent triggering the song item click
         const clickedIndex = parseInt(e.target.id);
 
         if (clickedIndex !== songIndex || audioElement.paused) {
@@ -170,6 +177,44 @@ document.querySelectorAll(".songItemPlay").forEach((element) => {
             removeAllPlaying();
             songItems[songIndex].getElementsByTagName("img")[0].classList.remove("rotating");
         }
+    });
+});
+
+// Song item click-to-play functionality
+document.querySelectorAll(".songItem").forEach((element) => {
+    element.addEventListener('click', (e) => {
+        // Don't trigger if clicking on play button or like button
+        if (e.target.classList.contains('songItemPlay') || e.target.classList.contains('song-like-btn')) {
+            return;
+        }
+
+        const clickedIndex = parseInt(element.dataset.index);
+        playSong(clickedIndex);
+    });
+});
+
+// Song like button event listeners
+document.querySelectorAll(".song-like-btn").forEach((element) => {
+    element.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent triggering the song item click
+        const clickedIndex = parseInt(e.target.dataset.index);
+
+        if (likedSongs.has(clickedIndex)) {
+            likedSongs.delete(clickedIndex);
+            e.target.classList.remove("fa-solid", "liked");
+            e.target.classList.add("fa-regular");
+            e.target.title = "Like";
+            showNotification('Removed from liked songs');
+        } else {
+            likedSongs.add(clickedIndex);
+            e.target.classList.remove("fa-regular");
+            e.target.classList.add("fa-solid", "liked");
+            e.target.title = "Unlike";
+            showNotification('Added to liked songs');
+        }
+
+        updateLikedSongsDisplay();
+        updateLikeButton(); // Update the main like button if current song
     });
 });
 function playNext() {
@@ -235,6 +280,12 @@ function playSong(index) {
 
         // Update like button
         updateLikeButton();
+
+        // Update all like buttons
+        updateAllLikeButtons();
+
+        // Update liked songs display if visible
+        updateLikedSongsDisplay();
     }).catch(error => {
         console.log("Playback failed:", error);
         showNotification("Playback failed. Please try again.");
@@ -251,7 +302,13 @@ if (volumeSlider) {
         audioElement.volume = volume;
         updateVolumeIcon();
         updateVolumeSliderBackground();
-        console.log('Volume changed to:', volume); // Debug log
+
+        // Show volume notification
+        if (volume === 0) {
+            showNotification('Muted');
+        } else {
+            showNotification(`Volume: ${Math.round(volume * 100)}%`);
+        }
     });
 
     // Also listen for change event
@@ -288,15 +345,16 @@ if (volumeIcon) {
             volumeIcon.dataset.previousVolume = audioElement.volume;
             audioElement.volume = 0;
             if (volumeSlider) volumeSlider.value = 0;
+            showNotification('Muted');
         } else {
             // Restore previous volume or default to 0.5
             const previousVolume = volumeIcon.dataset.previousVolume || 0.5;
             audioElement.volume = previousVolume;
             if (volumeSlider) volumeSlider.value = previousVolume * 100;
+            showNotification(`Volume: ${Math.round(previousVolume * 100)}%`);
         }
         updateVolumeIcon();
         updateVolumeSliderBackground();
-        console.log('Volume toggled to:', audioElement.volume);
     });
 }
 
@@ -575,18 +633,22 @@ function updateLikedSongsDisplay() {
     }
 
     let likedHTML = '';
-    likedSongs.forEach(songIndex => {
-        const song = songs[songIndex];
+    likedSongs.forEach(songIdx => {
+        const song = songs[songIdx];
+        const isCurrentlyPlaying = songIdx === songIndex && !audioElement.paused;
+        const playIcon = isCurrentlyPlaying ? 'fa-pause-circle' : 'fa-play-circle';
+
         likedHTML += `
-            <div class="liked-song-item" data-index="${songIndex}">
+            <div class="liked-song-item" data-index="${songIdx}">
                 <img src="${song.coverPath}" alt="${song.songName}" />
                 <div class="liked-song-info">
                     <div class="liked-song-name">${song.songName}</div>
                     <div class="liked-song-artist">${song.artist}</div>
                 </div>
                 <div class="liked-song-actions">
-                    <i class="fa-solid fa-play" onclick="playSong(${songIndex})" title="Play"></i>
-                    <i class="fa-solid fa-heart-crack" onclick="removeLikedSong(${songIndex})" title="Remove from liked"></i>
+                    <i class="fa-solid fa-heart-crack liked-unlike-btn" data-index="${songIdx}" title="Remove from liked"></i>
+                    <span class="liked-song-time">${formatTime(song.duration)}</span>
+                    <i class="fas ${playIcon} liked-play-btn" data-index="${songIdx}" title="Play"></i>
                 </div>
             </div>
         `;
@@ -594,13 +656,74 @@ function updateLikedSongsDisplay() {
 
     if (likedSongsList) likedSongsList.innerHTML = likedHTML;
     if (likedModalList) likedModalList.innerHTML = likedHTML;
+
+    // Add event listeners to the new play buttons
+    addLikedSongEventListeners();
 }
 
 function removeLikedSong(index) {
     likedSongs.delete(index);
+
+    // Update the main song list like button
+    const mainLikeButton = document.querySelector(`.song-like-btn[data-index="${index}"]`);
+    if (mainLikeButton) {
+        mainLikeButton.classList.remove("fa-solid", "liked");
+        mainLikeButton.classList.add("fa-regular");
+        mainLikeButton.title = "Like";
+    }
+
     updateLikedSongsDisplay();
-    updateLikeButton();
+    updateLikeButton(); // Update the main player like button if current song
     showNotification('Removed from liked songs');
+}
+
+function addLikedSongEventListeners() {
+    // Add click listeners to liked song play buttons
+    document.querySelectorAll('.liked-play-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const clickedIndex = parseInt(e.target.dataset.index);
+
+            if (clickedIndex !== songIndex || audioElement.paused) {
+                // Play new song or resume paused song
+                playSong(clickedIndex);
+            } else {
+                // Pause current song
+                audioElement.pause();
+                masterPlay.classList.remove("fa-pause-circle");
+                masterPlay.classList.add("fa-play-circle");
+                gif.style.opacity = 0;
+                removeAllPlaying();
+                songItems[songIndex].getElementsByTagName("img")[0].classList.remove("rotating");
+                makeAllPlays();
+                updateLikedSongsDisplay();
+            }
+        });
+    });
+
+    // Add click listeners to unlike buttons
+    document.querySelectorAll('.liked-unlike-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const clickedIndex = parseInt(e.target.dataset.index);
+            removeLikedSong(clickedIndex);
+        });
+    });
+
+    // Add click listeners to liked song items (for full row click)
+    document.querySelectorAll('.liked-song-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            // Don't trigger if clicking on buttons
+            if (e.target.classList.contains('liked-play-btn') ||
+                e.target.classList.contains('liked-unlike-btn') ||
+                e.target.classList.contains('fa-heart-crack')) {
+                return;
+            }
+
+            const clickedIndex = parseInt(item.dataset.index);
+            playSong(clickedIndex);
+        });
+    });
 }
 
 // Tab Management
@@ -655,6 +778,7 @@ window.addEventListener('click', (event) => {
 updateCurrentSong();
 updateVolumeIcon();
 updateVolumeSliderBackground();
+updateAllLikeButtons();
 
 // Ensure audio element is ready
 audioElement.addEventListener('loadedmetadata', () => {
@@ -683,4 +807,20 @@ function updateLikeButton() {
     } else {
         likeButton.className = "fa-regular fa-heart";
     }
+}
+
+// Update all song like buttons state
+function updateAllLikeButtons() {
+    document.querySelectorAll('.song-like-btn').forEach((button) => {
+        const buttonIndex = parseInt(button.dataset.index);
+        if (likedSongs.has(buttonIndex)) {
+            button.classList.remove("fa-regular");
+            button.classList.add("fa-solid", "liked");
+            button.title = "Unlike";
+        } else {
+            button.classList.remove("fa-solid", "liked");
+            button.classList.add("fa-regular");
+            button.title = "Like";
+        }
+    });
 }

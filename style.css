@@ -156,7 +156,7 @@ nav ul {
   align-items: center;
   width: 95%;
   max-width: 1400px;
-  margin: 20px auto 150px;
+  margin: 20px auto;
   color: var(--text-primary);
   background: var(--bg-light);
   border-radius: 16px;
@@ -641,6 +641,16 @@ h2 i {
   color: var(--primary-green);
   transform: scale(1.15);
 }
+
+.liked-unlike-btn {
+  color: var(--primary-green) !important;
+  font-size: 1.2rem !important;
+}
+
+.liked-unlike-btn:hover {
+  color: #ff4757 !important;
+  transform: scale(1.2) !important;
+}
 .songItem {
   display: flex;
   align-items: center;
@@ -721,6 +731,25 @@ h2 i {
   align-items: center;
   gap: 10px;
   margin-right: 15px;
+}
+
+.song-like-btn {
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.song-like-btn:hover {
+  color: var(--primary-green);
+  background: rgba(29, 185, 84, 0.1);
+  transform: scale(1.1);
+}
+
+.song-like-btn.liked {
+  color: var(--primary-green);
 }
 
 .time {
